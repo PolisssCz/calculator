@@ -117,10 +117,20 @@ number.on('click', function (event) {
     }
 });
 
-// Save operation value == ÷,x,-,+
+/************
+* Validation.
+* Save operation value == "÷,x,-,+".
+*************************************/
 $('.btn-operation').on('click', function (event){
     var operation = $(event.target).text();
-    // Validation
+
+    /* validation */
+    // if I enter an operation value and then a number and then the operation value again - the entered number is not converted to the operation value.
+    if( $('#operation').exists() && $('#number-2').exists() ) {
+        console.log("další nejde");
+        return false
+    }
+
     if(  $('#operation').exists() ){ 
         // Remove the previous value of the operation
         $('#operation').remove();
