@@ -126,7 +126,7 @@ $('.btn-operation').on('click', function (event){
 
     /* validation */
     // if I enter an operation value and then a number and then the operation value again - the entered number is not converted to the operation value.
-    if( $('#operation').exists() && $('#number-2').exists() ) {
+    if( $('#operation').exists() && $('#number-2').val().length !=0  ) {
         console.log("další nejde");
         return false
     }
