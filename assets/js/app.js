@@ -171,20 +171,27 @@ $('.btn-operation').on('click', function (event){
 inpSubmit.on('click', function (event) {
 
     if ( ($('#number-2').exists()) || ($('#bracket-c').exists()) ) {
-    // event.preventDefault();
-    screen.css({
-        'transition': '.5s',
-        'background': '#e3e278'
-    });
-    $.ajax({
-        type: "POST",
-        url: form.attr('action'),
-        data: form.serialize(),
-        success: function (equals) {
-            onScreen(equals, true);
-            $('<input id="equals" class="inputs" name="equals" type="hidden" value="'+ equals +'">').appendTo(form);
+
+        event.preventDefault();
+        if ( $('#bracket-c').exists() ) {
+            $('<input class="inputs" name="bracket" type="hidden" value="true">').appendTo(form); 
+        } else {
+            $('<input class="inputs" name="bracket" type="hidden" value="false">').appendTo(form); 
         }
-    });
+        
+        screen.css({
+            'transition': '.5s',
+            'background': '#e3e278'
+        });
+        $.ajax({
+            type: "POST",
+            url: form.attr('action'),
+            data: form.serialize(),
+            success: function (equals) {
+                onScreen(equals, true);
+                $('<input id="equals" class="inputs" name="equals" type="hidden" value="'+ equals +'">').appendTo(form);
+            }
+        });
     } else {
         return false
     }
@@ -204,7 +211,7 @@ $('#bracket-open').on('click', function bracket(event) {
 $('#bracket-close').on('click', function bracket(event) {
     var bracketO = $(event.target).text();
     if ( ($('#bracket-o').exists()) && ($('#bracket-number-2').exists()) && (! $('#bracket-c').exists()) ) {
-        $('<input id="bracket-c" class="inputs" name="bracket-o" type="hidden" value="'+ bracketO +'">').appendTo(form);
+        $('<input id="bracket-c" class="inputs" name="bracket-c" type="hidden" value="'+ bracketO +'">').appendTo(form);
         return true
     } else {
         return false
