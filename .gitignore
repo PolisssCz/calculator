@@ -1,12 +1,12 @@
-.vscode / *
-! .vscode / settings.json
-! .vscode / tasks.json
-! .vscode / launch.json
-! .vscode / extensions.json
-! .vscode / * .code-snippets
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
 
-# Místní historie pro kód Visual Studio
-.historie /
+# Local History for Visual Studio Code
+.history/
 
-# Rozšíření kódu pro Visual Studio
-* .vsix
+# Built Visual Studio Code Extensions
+*.vsix
