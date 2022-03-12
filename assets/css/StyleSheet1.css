@@ -75,6 +75,9 @@ input{
     outline: none;
     background: #36c436;
 }
+.keypad .row:first-child{
+    margin-bottom: 13px;
+}
 .keypad .row:first-of-type button{
     width: 27.2%;
     background: #dadce0;
