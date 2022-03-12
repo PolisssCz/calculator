@@ -65,7 +65,7 @@ $('button').on('click', function (event) {
     // Checking the brackets
     if ( ( charKey == "(" ) )
     {
-        if ( ($('#number-1').exists()) && ($('#operation').exists()) && (! $('#bracket-o').exists()) ) {
+        if ( ($('#number-1').exists()) && ($('#operation').exists()) && (! $('#bracket-o').exists()) && (! $('#number-2').exists()) ) {
             return onScreen(charKey);
         } else {
             return false
@@ -201,7 +201,7 @@ inpSubmit.on('click', function (event) {
 $('#bracket-open').on('click', function bracket(event) {
     var bracketO = $(event.target).text();
 
-    if ( $('#bracket-o').exists() ) {
+    if ( ($('#bracket-o').exists()) || ($('#number-2').exists()) ) {
         return false
     } else {
         $('<input id="bracket-o" class="inputs" name="bracket-o" type="hidden" value="'+ bracketO +'">').appendTo(form);
