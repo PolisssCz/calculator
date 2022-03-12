@@ -55,9 +55,7 @@ $('button').on('click', function (event) {
         onScreen('', true);
     }
 
-    // Button validation
-
-
+    /* Button validation */
     if ( $('#bracket-c').exists() ) {
         return false
     }
@@ -118,7 +116,7 @@ $('button').on('click', function (event) {
 $('.btn-operation').on('click', function (event){
     var operation = $(event.target).text();
 
-    /* validation */
+    /* Validation */
     
     // If there is a bracket, we can insert an operation value
     if( ($("#bracket-number-1").exists()) && (! $("#bracket-operation").exists()) ){
@@ -133,8 +131,6 @@ $('.btn-operation').on('click', function (event){
         var newVal = original.slice(0, -1) + ''+ operation +'';
         onScreen(newVal, true);
     }
-
-    
 
     // If i enter an operation value and then a number and then the operation value again - the entered number is not converted to the operation value.
     if( ($('#operation').exists()) && ( $("#number-2").exists()) ) {
@@ -176,16 +172,20 @@ inpSubmit.on('click', function (event) {
     if ( ($('#number-2').exists()) || ($('#bracket-c').exists()) ) {
 
         event.preventDefault();
+        // If brackets exist add input with value true
         if ( $('#bracket-c').exists() ) {
             $('<input class="inputs" name="bracket" type="hidden" value="true">').appendTo(form); 
         } else {
             $('<input class="inputs" name="bracket" type="hidden" value="false">').appendTo(form); 
         }
         
+        // Edit screen css
         screen.css({
             'transition': '.5s',
             'background': '#e3e278'
         });
+
+        // Ajax
         $.ajax({
             type: "POST",
             url: form.attr('action'),
