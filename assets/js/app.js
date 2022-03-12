@@ -169,7 +169,7 @@ $('.btn-operation').on('click', function (event){
 // Input validation
 inpSubmit.on('click', function (event) {
 
-    if ( ($('#number-2').exists()) || ($('#bracket-c').exists()) ) {
+    if ( ($('#number-2').exists()) && (! $('#equals').exists()) || ($('#bracket-c').exists()) && (! $('#equals').exists()) ) {
 
         event.preventDefault();
         // If brackets exist add input with value true
