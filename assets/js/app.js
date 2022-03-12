@@ -56,22 +56,23 @@ $('button').on('click', function (event) {
     }
 
     // Button validation
-    var operation = {'÷' : 1, '×' : 1, '\u2212' : 1, '+' : 1};
+
 
     if ( $('#bracket-c').exists() ) {
         return false
     }
 
-    // Checking the brackets
+    // Checking the brackets-open
     if ( ( charKey == "(" ) )
     {
-        if ( ($('#number-1').exists()) && ($('#operation').exists()) && (! $('#bracket-o').exists()) ) {
+        if ( ($('#number-1').exists()) && ($('#operation').exists()) && (! $('#bracket-o').exists()) && (! $('#number-2').exists()) ) {
             return onScreen(charKey);
         } else {
             return false
         }
     }
 
+    // Checking the brackets-close
     if ( ( charKey == ")" ) )
     {
         if ( ($("#bracket-number-2").exists()) && (! $("#bracket-c").exists()) ) {
@@ -87,6 +88,8 @@ $('button').on('click', function (event) {
 
 
     // Visual display
+    var operation = {'÷' : 1, '×' : 1, '\u2212' : 1, '+' : 1};
+
     if ( (charKey in operation) )
     {
         if ( ($('#number-1').exists()) && (! $('#bracket-o').exists()) && (! $('#operation').exists()) ) { 
@@ -188,8 +191,11 @@ inpSubmit.on('click', function (event) {
             url: form.attr('action'),
             data: form.serialize(),
             success: function (equals) {
+                if( $('.history').exists() ) { $('.history').remove(); }
+                var history = $('#calc-screen').val();
                 onScreen(equals, true);
                 $('<input id="equals" class="inputs" name="equals" type="hidden" value="'+ equals +'">').appendTo(form);
+                $('<span class="history">'+'Předchozí příklad: '+''+ history+''+ " = " +''+ equals +'</span>').appendTo(form); 
             }
         });
     } else {
@@ -198,16 +204,19 @@ inpSubmit.on('click', function (event) {
 
 });
 
+// Brackets-open button 
 $('#bracket-open').on('click', function bracket(event) {
     var bracketO = $(event.target).text();
 
-    if ( $('#bracket-o').exists() ) {
+    if ( ($('#bracket-o').exists()) || ($('#number-2').exists()) || (! $('#operation').exists()) ) { 
         return false
     } else {
         $('<input id="bracket-o" class="inputs" name="bracket-o" type="hidden" value="'+ bracketO +'">').appendTo(form);
         return true
     }
 })
+
+// Brackets-close button
 $('#bracket-close').on('click', function bracket(event) {
     var bracketO = $(event.target).text();
     if ( ($('#bracket-o').exists()) && ($('#bracket-number-2').exists()) && (! $('#bracket-c').exists()) ) {
@@ -272,6 +281,25 @@ number.on('click', function (event) {
         $('<input id="number-1" class="inputs" name="number-1" type="hidden" value="'+ number +'">').appendTo(form);
         return true
     }
+});
+
+// Clear backspace
+$('#backspace').on('click', function clear(){
+    var input = $('.inputs:last-child');
+    var inputVal = $('.inputs:last-child').val().slice(0, -1);
+
+    // Deletion of data for calculation
+    if ( input.val().length > 1 ) {
+        input.appendTo(form).val(inputVal);
+    } else {
+        input.remove();
+    }
+
+    // Visual display
+    var original = screen.val();
+    var newVal = original.slice(0, -1);
+    onScreen(newVal, true);
+
 });
 
 // Clear button
