@@ -283,6 +283,25 @@ number.on('click', function (event) {
     }
 });
 
+// Clear backspace
+$('#backspace').on('click', function clear(){
+    var input = $('.inputs:last-child');
+    var inputVal = $('.inputs:last-child').val().slice(0, -1);
+
+    // Deletion of data for calculation
+    if ( input.val().length > 1 ) {
+        input.appendTo(form).val(inputVal);
+    } else {
+        input.remove();
+    }
+
+    // Visual display
+    var original = screen.val();
+    var newVal = original.slice(0, -1);
+    onScreen(newVal, true);
+
+});
+
 // Clear button
 $('#clear').on('click', function clear(){
     screen.css({
