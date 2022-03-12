@@ -86,7 +86,7 @@ $('button').on('click', function (event) {
     }
 
 
-    // visual display
+    // Visual display
     if ( (charKey in operation) )
     {
         if ( ($('#number-1').exists()) && (! $('#bracket-o').exists()) && (! $('#operation').exists()) ) { 
@@ -241,7 +241,7 @@ number.on('click', function (event) {
     /* 
     *** Storing number no brackets
     */
-    if ( ($('#operation').exists()) && (! $('#bracket-number-1').exists()) ) { 
+    if ( ($('#operation').exists()) && (! $('#bracket-number-1').exists()) && (! $('#number-2').exists()) ) { 
         $('<input id="number-2" class="inputs" name="number-2" type="hidden" value="'+ number +'">').appendTo(form);
     } 
     else if ( $('#number-2').exists() )
