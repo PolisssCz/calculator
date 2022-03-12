@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="assets/css/normalize.css" rel="stylesheet"/>
     <link href="assets/css/StyleSheet1.css" rel="stylesheet"/>
-    <title>Calculator</title>
+    <title>Calculator v1</title>
 </head>
 <body>
 
