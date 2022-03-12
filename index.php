@@ -16,7 +16,6 @@
             <input id="calc-screen" name="screen" type="text" class="screen" placeholder="0" readonly="true">
             <div class="keypad">
                 <div class="row">
-                    <button id="clear">C</button>
                     <button id="bracket-open">(</button>
                     <button id="bracket-close">)</button>
                 </div>

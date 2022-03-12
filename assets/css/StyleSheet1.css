@@ -68,15 +68,15 @@ input{
 
     margin-bottom: 12px;
     padding-right: 15px;
-    border: groove;
+    border: none;
 
     font-size: 34px;
     text-align: right;
     outline: none;
-    background: #36c436;
+    background: #ffffff;
 }
 .keypad .row:first-of-type button{
-    width: 31.7%;
+    width: 48.7%;
     background: #dadce0;
 }
 .row{
