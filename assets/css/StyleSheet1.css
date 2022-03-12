@@ -76,7 +76,7 @@ input{
     background: #36c436;
 }
 .keypad .row:first-of-type button{
-    width: 31.7%;
+    width: 27.2%;
     background: #dadce0;
 }
 .row{
@@ -112,10 +112,34 @@ button:last-child{
     transition: .5s;
 }
 #clear{
+    width: 40px;
+    border-radius: 20px;
+
     color: red;
 }
 #clear:hover{
     background: red;
     color: black;
     transition: .3s;
+}
+.history{
+    position: absolute;
+    bottom: 82%;
+    color: #36c436;
+    text-shadow: 1px 0px 1px darkred;
+}
+#backspace {
+    position: relative;
+    top: 4px;
+}
+#backspace:active,
+#backspace:hover {
+    background: #ffe3af;
+    transition: .5s;
+}
+#backspace svg {
+    position: relative;
+    top: 2px;
+    left: -1px;
+    fill: #db9413;
 }
