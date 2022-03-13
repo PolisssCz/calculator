@@ -31,8 +31,8 @@ V sekci **odvětví** se můžete podívat na **kód všech verzí**.
 # **Verze 2**
 ### **Funkce:**
 \:- Přidání - tlačítka pro vymazání aktuální operace.  
-\:- Výpočty - včetně závorek, npř. ``10x(96÷6)``.   
-\:- Výpočty - (bez použití závorek), mají povolené číslené formátování výsledků.   
+\:- Výpočty - včetně závorek, např. ``10x(96÷6)``.   
+\:- Výpočty - (bez použití závorek), mají povolené číselné formátování výsledků.   
 ### **Oprava chyb:**
 \:- Přepisování druhého čísla na operační znaménko.
 
