@@ -1,18 +1,10 @@
-# Calculator master
+# Calculator, Verze 3
 ### **Master** je totožná s poslední vydanou **verzí 3**. 
 
 Kalkulačka **master** - je plně funkční, přesně jak se od kalkulačky očekává.  
 V sekci **odvětví** se můžete podívat na **kód všech verzí**.  
 
 ---
- 
-### **Struktura:**
-* **index.php** - Klasické hmtl + proměnná pro _hezčí vzhled kódu._
-* **math.php** - Přijímá hodnoty z inputů formuláře. Následně zpracuje požadavek, a **zobrazí výsledek operace na stránku.**
-* **normalize.css** - Je malý soubor CSS, který zajišťuje lepší konzistenci **výchozího stylování prvků HTML** napříč prohlížeči.
-* **StyleSheet1.css** - Zde je veškeré CSS stylování.
-* **app.js** - Se stará o všechny **ovládací prvky**, **zobrazení hodnot na displeji**, **validaci**, a **Ajax**.
-
 
 <br>
 
