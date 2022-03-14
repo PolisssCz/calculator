@@ -1,4 +1,4 @@
-# Calculator, Verze 3
+# Calculator, Master
 ### **Master** je totožná s poslední vydanou **verzí 3**. 
 
 Kalkulačka **master** - je plně funkční, přesně jak se od kalkulačky očekává.  
