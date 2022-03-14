@@ -16,6 +16,7 @@ V sekci **odvětví** se můžete podívat na **kód všech verzí**.
 \:- Při počítání v závorkách (validace).  
 \:- Oprava přepisování čísla (v závorce).  
 \:- Umístění závorky ``1x2(15+15)``.  
+\:- Umístění závorky ``(5x3)x10``.  
 \:- Oprava přepisování historie.
 
 <br>
