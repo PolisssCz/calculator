@@ -87,10 +87,8 @@ $('button').on('click', function (event) {
 
     if ( (charKey in operation) )
     {
-        console.log("jsem tady: START");
         if ( ($("#number-1").exists()) && (! $('#operation').exists()) || (! $('#operation').exists()) && ( $('#bracket-c').is(":last-child")) || ($("#bracket-number-1").exists()) && (! $("#bracket-operation").exists()) ) { 
             onScreen(charKey);
-            console.log("jsem tady:2");
             return true
         }
         else if ( ($('#number-1').exists()) && ( $('#operation').exists()) && (! $('#bracket-number-1').exists()) || ($('#operation').is(':last-child')) ) 
@@ -98,7 +96,6 @@ $('button').on('click', function (event) {
             var operationChar = $('#operation').val();
             var original = screen.val();
             original.slice(0, -1) + ''+ operationChar +'';
-            console.log("jsem tady:3");
             return true
         }  
         else if ( ($('#bracket-o').is(':last-child')) ) 
@@ -108,11 +105,10 @@ $('button').on('click', function (event) {
          else {
             return false            
         }
-    } else if ( ($('#number-1').exists()) && ($('#bracket-c').is(':last-child')) ) {
+    } else if ( ($('#number-1').exists()) || ($('#bracket-c').is(':last-child')) ) {
         return false     
     }
     else {
-        console.log("jsem tady:4");
         onScreen(charKey);
     }
 
