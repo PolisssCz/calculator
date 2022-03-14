@@ -1,7 +1,12 @@
 <?php
 
 // Check if the request contains bracket
-if ( $_POST['bracket'] == 'true' ) {
+if ( $_POST['just-bracket'] == 'true') {
+    $total = calculation( $_POST['bracket-number-1'], $_POST['bracket-operation'] ,$_POST['bracket-number-2'], true );
+    echo "$total";
+}
+else if ( $_POST['bracket'] == 'true' ) 
+{
     $bracket_total = calculation( $_POST['bracket-number-1'], $_POST['bracket-operation'], $_POST['bracket-number-2'] );
     $total = calculation( $_POST['number-1'], $_POST['operation'], $bracket_total );
     echo "$total";

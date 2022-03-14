@@ -175,11 +175,17 @@ inpSubmit.on('click', function (event) {
     if ( ($('#number-2').exists()) && (! $('#equals').exists()) || ($('#bracket-c').exists()) && (! $('#equals').exists()) ) {
 
         event.preventDefault();
-        // If brackets exist add input with value true
-        if ( $('#bracket-c').exists() ) {
-            $('<input class="inputs" name="bracket" type="hidden" value="true">').appendTo(form); 
-        } else {
-            $('<input class="inputs" name="bracket" type="hidden" value="false">').appendTo(form); 
+        // Checking the structure of the example 
+        if ( (! $('#number-1').exists()) && (! $('#operation').exists()) && (! $('#number-2').exists()) ) {
+            $('<input class="inputs" name="just-bracket" type="hidden" value="true">').appendTo(form); 
+        } 
+        else 
+        {
+            if ( $('#bracket-c').exists() ) {
+                $('<input class="inputs" name="bracket" type="hidden" value="true">').appendTo(form); 
+            } else {
+                $('<input class="inputs" name="bracket" type="hidden" value="false">').appendTo(form); 
+            }
         }
         
         // Edit screen css
