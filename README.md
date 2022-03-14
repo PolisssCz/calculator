@@ -16,6 +16,7 @@ V sekci **odvětví** se můžete podívat na **kód všech verzí**.
 \:- Při počítání v závorkách (validace).  
 \:- Oprava přepisování čísla (v závorce).  
 \:- Umístění závorky ``1x2(15+15)``.  
+\:- Umístění závorky ``(5x3)x10``.  
 \:- Oprava přepisování historie.
 
 <br>
@@ -23,8 +24,8 @@ V sekci **odvětví** se můžete podívat na **kód všech verzí**.
 # **Verze 2**
 ### **Funkce:**
 \:- Přidání - tlačítka pro vymazání aktuální operace.  
-\:- Výpočty - včetně závorek, npř. ``10x(96÷6)``.   
-\:- Výpočty - (bez použití závorek), mají povolené číslené formátování výsledků.   
+\:- Výpočty - včetně závorek, např. ``10x(96÷6)``.   
+\:- Výpočty - (bez použití závorek), mají povolené číselné formátování výsledků.   
 ### **Oprava chyb:**
 \:- Přepisování druhého čísla na operační znaménko.
 
