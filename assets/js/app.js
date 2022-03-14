@@ -105,7 +105,7 @@ $('button').on('click', function (event) {
          else {
             return false            
         }
-    } else if ( ($('#number-1').exists()) || ($('#bracket-c').is(':last-child')) ) {
+    } else if ( ($('#number-1').exists()) && ($("#number-1").is('last-child'))  || ($('#bracket-c').is(':last-child')) ) {
         return false     
     }
     else {
