@@ -40,10 +40,12 @@ document.addEventListener('keypress', function (event) {
     $('#key-'+ keyCode +'').click();
 });
 
-// Button control + validation
+// Button control + validation + VISUAL DISPLAY 
 $('button').on('click', function (event) { 
     event.preventDefault();
     var charKey = $(event.target).text();
+
+    /* VISUAL DISPLAY */
 
     // if the result is currently displayed, clear the screen.
     if( $('#equals').exists() ){
@@ -70,19 +72,19 @@ $('button').on('click', function (event) {
     // Checking the brackets-close
     if ( ( charKey == ")" ) )
     {
-        if ( ($("#bracket-number-2").exists()) && (! $("#bracket-c").exists()) ) {
+        if ( ($("#bracket-number-2").is(":last-child")) && (! $("#bracket-c").exists()) ) {
             return onScreen(charKey);
         } else {
             return false
         }
     }
-    else if ( ( charKey == ")" ) && (! $("#bracket-o").exists() ) ) 
+    /* else if ( ( charKey == ")" ) && (! $("#bracket-o").exists() ) ) 
     {
         return false
-    }
+    } */
 
 
-    // Visual display
+    // Operation - visual display
     var operation = {'÷' : 1, '×' : 1, '\u2212' : 1, '+' : 1};
 
     if ( (charKey in operation) )
@@ -183,8 +185,10 @@ inpSubmit.on('click', function (event) {
         {
             if ( $('#bracket-c').exists() ) {
                 $('<input class="inputs" name="bracket" type="hidden" value="true">').appendTo(form); 
+                $('<input class="inputs" name="just-bracket" type="hidden" value="false">').appendTo(form); 
             } else {
                 $('<input class="inputs" name="bracket" type="hidden" value="false">').appendTo(form); 
+                $('<input class="inputs" name="just-bracket" type="hidden" value="false">').appendTo(form); 
             }
         }
         
