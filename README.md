@@ -19,7 +19,7 @@ V sekci **odvětví** se můžete podívat na **kód všech verzí**.
 \:- Umístění závorky ``(5x3)x10``.  
 \:- Umístění závorky ``(5x3)``.  
 \:- Oprava přepisování historie.  
-\:- Úprava odesílání hodnot z formuláře.  
+\:- Úprava odesílání hodnot z formuláře.
 
 <br>
 
