@@ -31,7 +31,13 @@ var inpSubmit = $('#key-13');
             return screen.val(firstPart + secondPart);
         }
     };
-
+    /****************************************************
+    *    Replaces the previous value on the display with the new value.
+    *****************************************************/
+    function replacesPreviousValue(newValue) {
+        var correction = screen.val().slice(0, -1) + ''+ newValue +'';
+        return onScreen(correction, true);
+    };
 //
 
 // Keyboard control
@@ -78,22 +84,17 @@ $('button').on('click', function (event) {
             return false
         }
     }
-    /* else if ( ( charKey == ")" ) && (! $("#bracket-o").exists() ) ) 
-    {
-        return false
-    } */
-
 
     // Operation - visual display
     var operation = {'÷' : 1, '×' : 1, '\u2212' : 1, '+' : 1};
 
     if ( (charKey in operation) )
     {
-        if ( ($("#number-1").exists()) && (! $('#operation').exists()) || (! $('#operation').exists()) && ( $('#bracket-c').is(":last-child")) || ($("#bracket-number-1").exists()) && (! $("#bracket-operation").exists()) ) { 
+        if ( (! $('#operation').exists()) && ($('#number-1').exists()) || (! $('#operation').exists()) && ( $('#bracket-c').is(":last-child")) || (! $("#bracket-operation").exists()) && ($("#bracket-number-1").exists()) ) { 
             onScreen(charKey);
             return true
         }
-        else if ( ($('#number-1').exists()) && ( $('#operation').exists()) && (! $('#bracket-number-1').exists()) || ($('#operation').is(':last-child')) ) 
+        else if ( ( $('#operation').exists()) && ($('#number-1').exists()) && (! $('#bracket-number-1').exists()) || ($('#operation').is(':last-child')) ) 
         {
             var operationChar = $('#operation').val();
             var original = screen.val();
@@ -120,21 +121,19 @@ $('button').on('click', function (event) {
 * Save operation value == "÷,x,-,+".
 *************************************/
 $('.btn-operation').on('click', function (event){
-    var operation = $(event.target).text();
+    var operationVal = $(event.target).text();
 
     /* Validation */
     
     // If there is a bracket, we can insert an operation value
     if( ($("#bracket-number-1").exists()) && (! $("#bracket-operation").exists()) ){
-        $('<input id="bracket-operation" class="inputs" name="bracket-operation" type="hidden" value="'+ operation +'">').appendTo(form);
+        $('<input id="bracket-operation" class="inputs" name="bracket-operation" type="hidden" value="'+ operationVal +'">').appendTo(form);
     }
     else if ( ($("#bracket-operation").is(':last-child')) )
     {
         $('#bracket-operation').remove();
-        $('<input id="bracket-operation" class="inputs" name="bracket-operation" type="hidden" value="'+ operation +'">').appendTo(form);
-        var original = screen.val();
-        var newVal = original.slice(0, -1) + ''+ operation +'';
-        onScreen(newVal, true);
+        $('<input id="bracket-operation" class="inputs" name="bracket-operation" type="hidden" value="'+ operationVal +'">').appendTo(form);
+        replacesPreviousValue(operationVal);
     }
 
     // If i enter an operation value and then a number and then the operation value again - the entered number is not converted to the operation value.
@@ -154,17 +153,15 @@ $('.btn-operation').on('click', function (event){
         $('#number-2').remove();
 
         // Adding new operation value
-        $('<input id="operation" class="inputs" name="operation" type="hidden" value="'+ operation +'">').appendTo(form);
+        $('<input id="operation" class="inputs" name="operation" type="hidden" value="'+ operationVal +'">').appendTo(form);
 
         // Fix visualization
-        var original = screen.val();
-        var correction = original.slice(0, -1) + ''+ operation +'';
-        onScreen(correction, true)
+        replacesPreviousValue(operationVal);
         return true 
     }
     else if ( ($("#number-1").exists()) && (! $('#operation').exists()) || (! $('#operation').exists()) && ( $('#bracket-c').is(":last-child")) )
     {// If we do not override the operational value 
-        $('<input id="operation" class="inputs" name="operation" type="hidden" value="'+ operation +'">').appendTo(form);
+        $('<input id="operation" class="inputs" name="operation" type="hidden" value="'+ operationVal +'">').appendTo(form);
         return true
     } else {
         return false
@@ -275,6 +272,7 @@ number.on('click', function (event) {
     /* 
     *** Storing number no brackets
     */
+    // Number 1
     if (! $('#number-1').exists() ) {
         if ( ($('#bracket-o').exists()) && ($('#operation').exists()) ) {
             $('<input id="number-1" class="inputs" name="number-1" type="hidden" value="'+ number +'">').appendTo(form);
@@ -285,12 +283,12 @@ number.on('click', function (event) {
             return false
         }
     }
-
+    // Operation
     if ( ($('#operation').exists()) && (! $('#bracket-number-1').exists()) && (! $('#number-2').exists()) ) { 
         $('<input id="number-2" class="inputs" name="number-2" type="hidden" value="'+ number +'">').appendTo(form);
     } 
-    else if ( $('#number-2').exists() )
-    {
+    else if ( $('#number-2').exists() ) 
+    { // Number 2
         var firstPart = $('#number-2').val();
         $('#number-2').remove();
         $('<input id="number-2" class="inputs" name="number-2" type="hidden" value="'+ firstPart +''+ number +'">').appendTo(form);
@@ -332,9 +330,7 @@ $('#backspace').on('click', function clear(){
         }
     
         // Visual display
-        var original = screen.val();
-        var newVal = original.slice(0, -1);
-        onScreen(newVal, true);
+        replacesPreviousValue('');
     } else {
         return false
     }
